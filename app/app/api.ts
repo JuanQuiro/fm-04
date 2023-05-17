@@ -9,7 +9,7 @@ interface Advice {
 const useAdviceApi = () => {
   const [advice, setAdvice] = useState<Advice | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +19,7 @@ const useAdviceApi = () => {
         const result = await axios('https://api.adviceslip.com/advice');
         setAdvice(result.data.slip);
       } catch (error) {
-        setError(error);
+        setError('Error')
       }
 
       setIsLoading(false);
